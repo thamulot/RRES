@@ -1,28 +1,20 @@
 
-Imports Reagan.Agent
-
 Public Class MainForm
-
-    Private couenne As Reagan.Agent.MSAgent = New Reagan.Agent.MSAgent
 
     Private Function LoadDomain() As Reagan.Data.Domain
         Dim domaine As Reagan.Data.Domain = Nothing
 
         If (Me.OpenFileDialog1.ShowDialog() <> Windows.Forms.DialogResult.Cancel) Then
-            couenne.StopIt()
-            couenne.Animate("Search")
             domaine = Reagan.Data.BinaryManager.ReadFile(Me.OpenFileDialog1.FileName)
 
             Dim message As String = "Est-ce bien """ + domaine.Subject + """ par " + domaine.Authors + " ?"
-            couenne.Talk(message)
+            'couenne.Talk(message)
             Dim value As DialogResult = MessageBox.Show(message, "- Question -", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
 
             If (value = Windows.Forms.DialogResult.No) Then
                 domaine = LoadDomain()
             ElseIf (value = Windows.Forms.DialogResult.Cancel) Then
                 domaine = Nothing
-            Else
-                couenne.StopIt()
             End If
 
         End If
@@ -34,23 +26,12 @@ Public Class MainForm
         Dim splash As SplashScreen = New SplashScreen
         splash.Show()
 
-        couenne = New MSAgent
-        couenne.Load(AxAgent1, "Robby", Application.StartupPath + "\Robby.acs")
-        couenne.Show()
-        couenne.Talk("Bonjour, je m'appelle Calculon.")
-        couenne.Talk("Bienvenue dans le système expert Ronald \Map=""Rigueune""=""Reagan""\ !")
-
-        couenne.Animate("Suggest")
-        couenne.Talk("Veuillez choisir une base de connaissance :")
-
-        couenne.Wait()
+        'couenne.Talk("Bonjour, je m'appelle Calculon.")
+        'couenne.Talk("Bienvenue dans le système expert Ronald \Map=""Rigueune""=""Reagan""\ !")
+        'couenne.Talk("Veuillez choisir une base de connaissance :")
 
         Dim domaine As Reagan.Data.Domain = LoadDomain()
         If (Not (domaine Is Nothing)) Then
-
-            couenne.Animate("Think")
-            couenne.Wait()
-
             'couenne.Animate("Read")
             'couenne.Animate("ReadContinued")
             'couenne.Animate("ReadReturn")
@@ -58,21 +39,15 @@ Public Class MainForm
             ' Chargement du moteur d'inférence
             Dim successeur As Reagan.Engine.Successeurs = New Reagan.Engine.Successeurs(domaine.Facts, domaine.Rules)
             Do
-                successeur.Init()
-                couenne.StopIt()
-
                 ' Demande du problème
                 Dim probleme As Probleme = New Probleme()
                 Dim seulprobleme As Reagan.Data.Fact = probleme.ChargerListe(domaine.getEachPostConditions())
 
                 If (seulprobleme Is Nothing) Then
-                    couenne.Animate("GetAttention")
-                    couenne.Talk("À propos de quoi désirez-vous m'intérroger ?")
+                    'couenne.Talk("À propos de quoi désirez-vous m'intérroger ?")
                     probleme.ShowDialog()
                     seulprobleme = probleme.getProbleme
                 End If
-                couenne.Animate("Read")
-                couenne.Animate("ReadContinued")
 
                 Dim faitInitial As Reagan.Data.Fact = New Reagan.Data.Fact()
                 faitInitial.Name = seulprobleme.Name
@@ -82,12 +57,8 @@ Public Class MainForm
                 faitInitial.Comments = seulprobleme.Comments
                 faitInitial.Term = termeInitial
 
-                Reagan.Engine.QuestionsForm.couenne = couenne
-
                 Dim noeudInitial As Reagan.Engine.Noeud = New Reagan.Engine.Noeud(Nothing, faitInitial, False, "Racine")
                 Dim resultat As Boolean = Reagan.Engine.AEtoile.rechercheDansGraphe(noeudInitial, Nothing, successeur)
-
-                couenne.Animate("ReadReturn")
 
                 Dim reponse As String = "Pas de réponse."
                 Dim gosh2 As Reagan.Data.Fact = CType(noeudInitial.data, Reagan.Data.Fact)
@@ -98,14 +69,13 @@ Public Class MainForm
 
                 successeur.afficherResultat(reponse)
 
-                couenne.StopIt()
                 If resultat Then
-                    couenne.Animate("Congratulate")
+                    '                    couenne.Animate("Congratulate")
 
-                    couenne.Talk(reponse)
+                    'couenne.Talk(reponse)
                 Else
-                    couenne.Animate("Sad")
-                    couenne.Talk("Je n'ai pas trouvé de réponse à votre problème...")
+                    'couenne.Animate("Sad")
+                    'couenne.Talk("Je n'ai pas trouvé de réponse à votre problème...")
                 End If
 
             Loop Until (MessageBox.Show("Désirez-vous poser une autre question au système ?", "- Question -", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = Windows.Forms.DialogResult.No)
@@ -132,16 +102,6 @@ Public Class MainForm
             'couenne.Animate("Uncertain")
         End If
 
-        couenne.StopIt()
-        couenne.Talk("Au revoir !")
-        couenne.Animate("Wave")
-        couenne.Wait()
-
-        couenne.Animate("Hide")
-        couenne.Wait()
-        couenne.Animate("Hide")
-        couenne.Wait()
-        couenne.Hide()
         Application.Exit()
     End Sub
 End Class

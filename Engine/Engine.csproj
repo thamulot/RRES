@@ -69,10 +69,6 @@
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Agent\Agent.vbproj">
-      <Project>{AB7AC0A1-C484-46DD-96B9-E87C91E12E77}</Project>
-      <Name>Agent</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{23B851AF-80F5-4611-B47F-6515F16DC0BA}</Project>
       <Name>Data</Name>

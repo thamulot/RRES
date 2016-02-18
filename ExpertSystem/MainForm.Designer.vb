@@ -20,20 +20,8 @@ Partial Class MainForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-        Me.AxAgent1 = New AxAgentObjects.AxAgent
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
-        CType(Me.AxAgent1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'AxAgent1
-        '
-        Me.AxAgent1.Enabled = True
-        Me.AxAgent1.Location = New System.Drawing.Point(12, 12)
-        Me.AxAgent1.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.AxAgent1.Name = "AxAgent1"
-        Me.AxAgent1.OcxState = CType(resources.GetObject("AxAgent1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxAgent1.Size = New System.Drawing.Size(32, 32)
-        Me.AxAgent1.TabIndex = 2
         '
         'OpenFileDialog1
         '
@@ -47,7 +35,6 @@ Partial Class MainForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(360, 176)
-        Me.Controls.Add(Me.AxAgent1)
         Me.Font = New System.Drawing.Font("Rockwell Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
@@ -58,11 +45,9 @@ Partial Class MainForm
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Système Expert Ronald Reagan"
         Me.TopMost = True
-        CType(Me.AxAgent1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents AxAgent1 As AxAgentObjects.AxAgent
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
 
 End Class

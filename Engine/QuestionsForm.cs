@@ -10,8 +10,6 @@ namespace Reagan.Engine
 {
     public partial class QuestionsForm : Form
     {
-        public static Reagan.Agent.MSAgent couenne;
-
         String choix;
 
         public QuestionsForm()
@@ -24,7 +22,6 @@ namespace Reagan.Engine
         public void setQuestion(string q, bool isQuestion, bool talk) 
         {
             btn_close.Visible = false;
-            couenne.StopIt();
 
             if (!isQuestion)
             {
@@ -44,15 +41,10 @@ namespace Reagan.Engine
             }
 
             zone_question.Text = q;
-
-            if(talk)
-                couenne.Talk(q);
         }
 
         public void setTraceResulat(string q)
         {
-            couenne.StopIt();
-
             btn_how.Visible = true;
             btn_why.Visible = true;
             btn_yes.Visible = false;
@@ -90,7 +82,6 @@ namespace Reagan.Engine
         private void btn_close_Click(object sender, EventArgs e)
         {
             choix = "close";
-            couenne.StopIt();
             Close();
         }
     }
