@@ -1,0 +1,5 @@
+Backup/
+packages/
+**/obj/**
+**/CVS/**
+**/bin/**
