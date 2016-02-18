@@ -3,3 +3,5 @@ packages/
 **/obj/**
 **/CVS/**
 **/bin/**
+.vs/
+.paket/paket.exe
