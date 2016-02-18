@@ -130,9 +130,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Documents\ift615-projet-system-expert-annexe.pdf" />
-    <None Include="Documents\ift615-projet-system-expert.pdf" />
-    <None Include="Documents\rapport.doc" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -145,8 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ressources\09538.ico" />
-    <Content Include="Documents\readme.txt" />
-    <Content Include="Documents\readme_src.txt" />
     <Content Include="Ressources\splash.jpg" />
   </ItemGroup>
   <ItemGroup>
