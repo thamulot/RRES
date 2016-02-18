@@ -84,10 +84,10 @@
   -->
   <ItemGroup>
     <Reference Include="NLog">
-      <HintPath>..\packages\NLog\lib\NLog.dll</HintPath>
+      <HintPath>..\..\packages\NLog\lib\NLog.dll</HintPath>
       <Private>True</Private>
       <Paket>True</Paket>
     </Reference>
   </ItemGroup>
-  <Import Project="..\.paket\paket.targets" />
+  <Import Project="..\..\.paket\paket.targets" />
 </Project>
