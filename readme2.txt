@@ -1,2 +1,0 @@
-Pour compiler notre projet et générer les exécutables, il suffit d'ouvrir le fichier IFT615_TP3.sln avec Microsoft Visual studio 2005 (qui doit déjà être installé)
-Quand le tout est chargé, aller dans le menu build et choisir l'Option "build solution". Cela créera les exécutables.
